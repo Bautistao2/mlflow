@@ -1,15 +1,15 @@
-# Imagen base con Python
 FROM python:3.9-slim
 
-# Directorio de trabajo
 WORKDIR /app
 
-# Copiar requirements y el script
-COPY requirements.txt .
-COPY mlflow_demo.py .
+# Instalar git y otros paquetes necesarios
+RUN apt-get update && apt-get install -y git
 
-# Instalar dependencias
+# Instalar dependencias de Python
+COPY requirements.txt ./
 RUN pip install --no-cache-dir -r requirements.txt
 
-# Comando para correr el script
-CMD ["python", "mlflow_demo.py"]
+# Copiar el resto de los archivos
+COPY . .
+
+CMD ["mlflow", "server", "--host", "0.0.0.0", "--port", "5000", "--backend-store-uri", "sqlite:///mlflow.db"]

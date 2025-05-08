@@ -1,7 +1,7 @@
 # Nombre de la imagen
 IMAGE_NAME=mlflow_demo
 CONTAINER_NAME=mlflow_container
-PORT=5000
+PORT=5001
 
 # Construir la imagen
 build:
@@ -10,6 +10,9 @@ build:
 # Ejecutar el contenedor
 run:
 	docker run -d --name $(CONTAINER_NAME) -p $(PORT):5000 $(IMAGE_NAME)
+
+train:
+	docker exec -it $(CONTAINER_NAME) python /app/mlflow_demo.py
 
 # Ver logs del contenedor
 logs:
@@ -37,6 +40,7 @@ help:
 	@echo "Comandos disponibles:"
 	@echo "  make build   - Construir la imagen Docker"
 	@echo "  make run     - Ejecutar el contenedor"
+	@echo "  make train   - Entrenar nuestro modelo"
 	@echo "  make logs    - Ver los logs en tiempo real"
 	@echo "  make stop    - Detener y eliminar el contenedor"
 	@echo "  make restart - Reiniciar el contenedor"
