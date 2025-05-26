@@ -12,4 +12,5 @@ RUN pip install --no-cache-dir -r requirements.txt
 # Copiar el resto de los archivos
 COPY . .
 
-CMD ["mlflow", "server", "--host", "0.0.0.0", "--port", "5000", "--backend-store-uri", "sqlite:///mlflow.db"]
+# Comando por defecto para iniciar MLflow UI
+CMD ["mlflow", "ui", "--host", "0.0.0.0", "--port", "5000"]

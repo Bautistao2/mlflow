@@ -9,7 +9,7 @@ build:
 
 # Ejecutar el contenedor
 run:
-	docker run -d --name $(CONTAINER_NAME) -p $(PORT):5000 $(IMAGE_NAME)
+	docker run -d --name $(CONTAINER_NAME) -p $(PORT):5000 -v ${PWD}/mlruns:/app/mlruns $(IMAGE_NAME)
 
 train:
 	docker exec -it $(CONTAINER_NAME) python /app/mlflow_demo.py
@@ -31,9 +31,20 @@ clean:
 	docker rmi $(IMAGE_NAME) -f
 	docker rm $(CONTAINER_NAME) -f || true
 
-# Abrir la interfaz de MLflow en el navegador
-open:
+# Abrir la interfaz de MLflow en el navegador (Linux)
+open-linux:
 	xdg-open http://localhost:$(PORT)
+
+# Abrir la interfaz de MLflow en el navegador (macOS)
+open-mac:
+	open http://localhost:$(PORT)
+
+# Abrir la interfaz de MLflow en el navegador (Windows)
+open-win:
+	start http://localhost:$(PORT)
+
+# Alias para abrir el navegador dependiendo del sistema
+open: open-win
 
 # Ayuda
 help:

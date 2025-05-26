@@ -6,6 +6,7 @@ import mlflow
 import mlflow.sklearn
 from sklearn.datasets import load_iris
 
+
 # Cargar el conjunto de datos de Iris
 # X, y = load_iris(return_X_y=True)
 iris = load_iris()
