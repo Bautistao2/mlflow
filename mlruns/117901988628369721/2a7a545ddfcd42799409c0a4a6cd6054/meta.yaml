@@ -1,0 +1,15 @@
+artifact_uri: file:///app/mlruns/117901988628369721/2a7a545ddfcd42799409c0a4a6cd6054/artifacts
+end_time: 1748258918425
+entry_point_name: ''
+experiment_id: '117901988628369721'
+lifecycle_stage: active
+run_id: 2a7a545ddfcd42799409c0a4a6cd6054
+run_name: indecisive-zebra-716
+run_uuid: 2a7a545ddfcd42799409c0a4a6cd6054
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1748258914185
+status: 3
+tags: []
+user_id: root
